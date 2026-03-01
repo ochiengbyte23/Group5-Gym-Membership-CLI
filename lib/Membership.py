@@ -1,6 +1,6 @@
 class Membership:
     """
-    So this part is going to represent the membership plans and operations
+    So this class is going to represent the membership plans and operations
     Available plans:
     - Bronze: Ksh. 5,000 per month
     - Silver: Ksh 10,000 every 3 months
@@ -21,13 +21,31 @@ class Membership:
         DIAMOND: 30000
     }
     
-    def __init__(self, bronze, silver, gold, diamond, membership_plan):
-        self.bronze =bronze
-        self.silver = silver
-        self.gold = gold
-        self.diamond = diamond
-        self.membership_plan = membership_plan
+    # Variable to track the memberships
+    all_memberships = []
+    
+    def __init__(self, membership_id, user_id, membership_plan):
+        """
+        Initialising a new membership
         
+        Arguments:
+        membership_id (int): Just a unique membership identifier
+        user_id (int): This would be the ID of the user who owns the membership
+        membership_plan (str): The plan types (Bronze, Silver, etc)
+        """
+        self.membership_id = membership_id
+        self.user_id = user_id
+        self.membership_plan = membership_plan
+        self.is_active = True # This will help us track if the membership is active or not
+        self.price = self.Prices.get(membership_plan, 0) # This will get the price based on the plan, default will be 0 if not found
+        
+        Membership.all_memberships.append(self) # Adding the new membership to the list of all memberships
+        
+        @property
+        def membership_plan(self):
+            """This is just going to get the current membership plan of the user"""
+            return self._membership_plan
+
         def add_plan(self):
             pass
     
