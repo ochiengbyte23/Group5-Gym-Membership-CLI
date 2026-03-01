@@ -9,5 +9,15 @@ class Admin:
         self.status = status
         Admin.admin_list.append(self)
         
+    def scheduling_day(self):
+            return self.schedule
+        
+    def no_members(self):
+            return len(self.admin_list)
+        
+    
+            
+    def __str__(self):
+        return f'Booking({self.admin_id }) User: {self.user_id} Trainer {self.trainee_id} at {self.schedule}'
       
         
