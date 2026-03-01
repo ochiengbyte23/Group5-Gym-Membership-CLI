@@ -15,7 +15,14 @@ class Admin:
     def no_members(self):
             return len(self.admin_list)
         
-    
+    def to_dict(self):
+            return {
+               "id": self.admin_id ,
+               "trainee_idr": self.trainee_id, 
+               "user_id": self.user_id,
+               "schedule": self.schedule,
+               "status": self.status,
+            }
             
     def __str__(self):
         return f'Booking({self.admin_id }) User: {self.user_id} Trainer {self.trainee_id} at {self.schedule}'
