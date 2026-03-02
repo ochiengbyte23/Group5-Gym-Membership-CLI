@@ -104,6 +104,18 @@ class Membership:
             
         
         def cancel_plan (self):
-            pass
+            """
+            
+            """
+            if not self.is_active:
+                print("Membership is already cancelled.")
+                return False
+            
+            self.is_active = False
+            print(f"{self.membership_plan} membership has been cancelled")
+            print("Sorry to see you go ;(")
+            return True
+        
+            
          
          
