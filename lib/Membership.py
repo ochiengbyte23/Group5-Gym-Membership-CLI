@@ -69,6 +69,11 @@ class Membership:
                 print(f"Available plans: {', '.join(self.Prices.keys())}")
                 return False 
            
+            self.membership_plan = plan_type
+            self.is_active = True
+            print(f"{plan_type} membership has been activated!!!") 
+            print(f" Monthly Cost: Ksh.{self.price}")
+            return True
         def plan_upgrade(self):
             pass
         
