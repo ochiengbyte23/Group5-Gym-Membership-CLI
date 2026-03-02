@@ -45,10 +45,30 @@ class Membership:
         def membership_plan(self):
             """This is just going to get the current membership plan of the user"""
             return self._membership_plan
-
-        def add_plan(self):
-            pass
-    
+        
+        @membership_plan.setter
+        def membership_plan(self, new_plan):
+            """
+            Sets a new membership plan WITH validation
+            
+            Arguments:
+            new_plan (str): New plan tpye you want to set it as
+            
+            Raises:
+            Value_error: If the plan type isn't valid
+            """
+            if new_plan not in self.Prices:
+                raise ValueError(f"Invalid membership plan, please choose from: {list(self.Prices.keys())}")
+            self._membership_plan = new_plan
+            self.price = self.Prices[new_plan] # Now this part updates the price based on the new plan the user chooses
+        def add_plan(self, plan_type):
+            """
+            """
+            if plan_type not in self.Prices:
+                print(f" Error: Invalid plan type '{plan_type}'")
+                print(f"Available plans: {', '.join(self.Prices.keys())}")
+                return False 
+           
         def plan_upgrade(self):
             pass
         
