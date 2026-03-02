@@ -37,7 +37,7 @@ def next_id(records):
 def book_trainer(args):
     users = load(USERS_FILE)
     trainers = load(TRAINERS_FILE)
-    admin = load(ADMIN_FILE)
+    admin_records = load(ADMIN_FILE)
     
     user = next((u for u in users if u['id'] == args.user_id), None)
     trainer = next((t for t in trainers if t['id'] == args.trainer_id), None)
@@ -61,4 +61,21 @@ def book_trainer(args):
     schedule=args.schedule,
     status=user["membership_plan"]
     )
+    admin_records.append(record.to_dict())
+    save(ADMIN_FILE, admin_records)
     print(f"{user['name']} booked trainer {trainer['name']} at {args.schedule}.")
+    
+ #__________listing schedule_____________________   
+def list_schedules(args):
+    admin_records = load(ADMIN_FILE)
+    users = load(USERS_FILE)
+    trainers = load(TRAINERS_FILE)
+
+    if not admin_records:
+        print("No bookings found.")
+        return
+    
+    for r in admin_records:
+        uname = next((u["name"] for u in users if u["id"] == r["user_id"]), "?")
+        tname = next((t["name"] for t in trainers if t["id"] == r["trainer_id"]), "?")
+        print(f"  [{r['id']}] {uname} → Trainer: {tname} | {r['schedule']} | Status: {r['status']}")
