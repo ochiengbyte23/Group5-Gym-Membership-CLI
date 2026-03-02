@@ -75,7 +75,33 @@ class Membership:
             print(f" Monthly Cost: Ksh.{self.price}")
             return True
         def plan_upgrade(self):
-            pass
+            """_summary_
+            """
+            #This is going to get the current plan index
+            plan_hierarchy = [self.BRONZE, self.SILVER, self.GOLD, self.DIAMOND]
+            
+            try:
+                current_index = plan_hierarchy.index(self.membership_plan)
+                new_index = plan_hierarchy.index(new_plan)
+                
+            except ValueError:
+                print("Error: Invalid plan type")
+                return False
+            
+            if new_index <= current_index:
+                print(f"Error: {new_plan} is not an upgrade from {self.membership_plan}")
+                print("Choose a higher tier plan type")
+                return False
+            
+            old_plan = self.membership_plan
+            old_price = self.price
+            
+            self.membership_plan = new_plan
+            print(f"Membership upgraded from {old_plan} to {new_plan}!")
+            print(f"{old_plan} (Ksh.{old_price} -> {new_plan} (Ksh.{self.price}))")
+            print (f"New monthly cost: Ksh.{self.price}")
+            return True
+            
         
         def cancel_plan (self):
             pass
