@@ -9,6 +9,7 @@ class Admin:
         
         def scheduling_day(self):
             pass
+            
         
         def no_members(self):
             pass
