@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 import argparse
 import os
 import json
@@ -194,3 +196,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+>>>>>>> 3e21f4490d3219c203448ee7187dc46f7c81330e
