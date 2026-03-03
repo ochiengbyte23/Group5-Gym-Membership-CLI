@@ -1,3 +1,4 @@
+
 class Membership:
     PLANS = {
         "bronze":  {"duration": "1 month",   "price": 5000},
