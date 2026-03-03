@@ -25,4 +25,4 @@ class Membership:
         if self.membership_plan == "none":
             return "No active plan"
         info = self.PLANS[self.membership_plan]
-        return f"{self.membership_plan.title()} - {info['duration']}  Ksh{info['price']:,}" 
+        return f"{self.membership_plan.title()} - {info['duration']}  Ksh{info['price']:,}"  
