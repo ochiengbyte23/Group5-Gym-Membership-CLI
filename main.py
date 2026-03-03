@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import argparse
 import os
 import json
@@ -57,7 +55,7 @@ def add_trainer(args):
     trainer = Trainer(next_id(trainers), args.name, args.experience)
     trainers.append(trainer.to_dict())
     save(TRAINERS_FILE, trainers)
-    print(f"✓Trainer added: {trainer}")
+    print(f"Trainer added: {trainer}")
 
 def list_trainers(args):
     trainers = load(TRAINERS_FILE)
@@ -80,6 +78,13 @@ def upgrade_membership(args):
         return
     user["membership_plan"] = args.plan
     save(USERS_FILE, users)
+    
+    admin_records = load(ADMIN_FILE)
+    for r in admin_records:
+     if r["user_id"] == args.user_id:
+        r["status"] = args.plan
+    save(ADMIN_FILE, admin_records)
+    
     print(f"User {user['name']} upgraded to {args.plan} plan.")
 
 def cancel_membership(args):
@@ -90,6 +95,13 @@ def cancel_membership(args):
         return
     user["membership_plan"] = "none"
     save(USERS_FILE, users)
+    
+    admin_records = load(ADMIN_FILE)
+    for r in admin_records:
+        if r["user_id"] == args.user_id:
+            r["status"] = "none"
+    save(ADMIN_FILE, admin_records)
+    
     print(f"Membership cancelled for {user['name']}.")
 
 #___________Admin commands(booking)_________
@@ -108,7 +120,7 @@ def book_trainer(args):
         print(f"Trainer ID {args.trainer_id} not found.")
         return
     
-    # links user to trainers in trainees list
+    # links user to trainers in trainees list(users)
     if args.user_id not in trainer['trainees_id']:
         trainer['trainees_id'].append(args.user_id)
         save(TRAINERS_FILE, trainers)
@@ -156,7 +168,7 @@ def main():
         p.set_defaults(func=list_users)
 
         # add-trainer
-        p = sub.add_parser("add-trainer", help="Add a trainer")
+        p = sub.add_parser("add-trainer", help="name\t" "experience")
         p.add_argument("name")
         p.add_argument("experience", type=int)
         p.set_defaults(func=add_trainer)
@@ -166,7 +178,7 @@ def main():
         p.set_defaults(func=list_trainers)
 
         # upgrade-membership
-        p = sub.add_parser("upgrade-membership", help="Change a user's membership plan")
+        p = sub.add_parser("upgrade-membership", help="add user_id and plan(bronze, silver, gold, diamond)")
         p.add_argument("user_id", type=int)
         p.add_argument("plan", choices=["bronze", "silver", "gold", "diamond"])
         p.set_defaults(func=upgrade_membership)
@@ -177,8 +189,8 @@ def main():
         p.set_defaults(func=cancel_membership)
 
         # book-trainer
-        p = sub.add_parser("book-trainer", help="Book a trainer for a user")
-        p.add_argument("user_id", type=int)
+        p = sub.add_parser("book-trainer", help=" add user_id, trainer_id and schedule")
+        p.add_argument("user_id", type=int, help="e.g. 1")
         p.add_argument("trainer_id", type=int)
         p.add_argument("schedule", help='Session time e.g. "Mon 09:00"')
         p.set_defaults(func=book_trainer)
@@ -196,4 +208,3 @@ def main():
 
 if __name__ == "__main__":
     main()
->>>>>>> 3e21f4490d3219c203448ee7187dc46f7c81330e

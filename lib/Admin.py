@@ -1,10 +1,9 @@
 class Admin:
-    #list shows the number of users attached to specific trainee
     admin_list = []
-    def __init__(self, admin_id, schedule, trainee_id, user_id, status = "active"):
+    def __init__(self, admin_id, schedule, trainer_id, user_id, status = "none"):
         self.admin_id = admin_id
         self.schedule = schedule
-        self.trainee_id = trainee_id
+        self.trainer_id = trainer_id
         self.user_id = user_id
         self.status = status
         Admin.admin_list.append(self)
@@ -18,13 +17,13 @@ class Admin:
     def to_dict(self):
             return {
                "id": self.admin_id ,
-               "trainee_idr": self.trainee_id, 
+               "trainer_id": self.trainer_id, 
                "user_id": self.user_id,
                "schedule": self.schedule,
                "status": self.status,
             }
             
     def __str__(self):
-        return f'Booking({self.admin_id }) User: {self.user_id} Trainer {self.trainee_id} at {self.schedule}'
+        return f'Booking({self.admin_id }) User: {self.user_id} Trainer {self.trainer_id} at {self.schedule}'
       
         

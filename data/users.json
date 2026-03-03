@@ -4,5 +4,17 @@
     "name": "Bill",
     "email": "deck@gmail.com",
     "membership_plan": "none"
+  },
+  {
+    "id": 2,
+    "name": "eugene",
+    "email": "eugene@yahoo.com",
+    "membership_plan": "bronze"
+  },
+  {
+    "id": 3,
+    "name": "Alice",
+    "email": "alice@gmail.com",
+    "membership_plan": "none"
   }
 ]

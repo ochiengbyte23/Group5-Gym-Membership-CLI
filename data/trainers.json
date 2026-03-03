@@ -1,12 +1,22 @@
 [
-    {
-        "name": "shana",
-        "trainer_id": "1",
-        "experience": "3"
-    },
-    {
-        "name": "shana",
-        "trainer_id": "1",
-        "experience": "2"
-    }
+  {
+    "id": 1,
+    "name": "lukas",
+    "experience": 7,
+    "trainees_id": [
+      1
+    ]
+  },
+  {
+    "id": 2,
+    "name": "paul",
+    "experience": 3,
+    "trainees_id": []
+  },
+  {
+    "id": 3,
+    "name": "Lukas",
+    "experience": 7,
+    "trainees_id": []
+  }
 ]
