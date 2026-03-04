@@ -6,7 +6,7 @@ A command-line application for managing gym memberships, trainers, and session b
 
 ## Project Structure
 
-```
+```table
 gym-cli/
 ├── main.py               # Entry point & CLI command definitions
 ├── Pipfile               # Pipenv dependency manager

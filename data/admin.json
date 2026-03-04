@@ -5,5 +5,12 @@
     "user_id": 1,
     "schedule": "Mon 09:00",
     "status": "none"
+  },
+  {
+    "id": 2,
+    "trainer_id": 4,
+    "user_id": 3,
+    "schedule": "Tue 07.30",
+    "status": "none"
   }
 ]

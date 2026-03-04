@@ -16,5 +16,11 @@
     "name": "Alice",
     "email": "alice@gmail.com",
     "membership_plan": "none"
+  },
+  {
+    "id": 4,
+    "name": "Mike",
+    "email": "mike@yahoo.com",
+    "membership_plan": "none"
   }
 ]

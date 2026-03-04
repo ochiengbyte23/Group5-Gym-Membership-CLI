@@ -18,5 +18,13 @@
     "name": "Lukas",
     "experience": 7,
     "trainees_id": []
+  },
+  {
+    "id": 4,
+    "name": "George",
+    "experience": 9,
+    "trainees_id": [
+      3
+    ]
   }
 ]

@@ -155,10 +155,10 @@ def list_schedules(args):
         
 def main():
         parser = argparse.ArgumentParser(prog="gym", description="Gym Membership CLI")
-        sub = parser.add_subparsers(dest="command")
+        sub = parser.add_subparsers(dest="command", metavar="COMMAND",)
         
           # add-user
-        p = sub.add_parser("add-user", help="name\t" "email")
+        p = sub.add_parser("add-user", help="name email")
         p.add_argument("name")
         p.add_argument("email")
         p.set_defaults(func=add_user)
